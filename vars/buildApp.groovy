@@ -22,9 +22,9 @@ def call(Map config=[:], Closure body) {
       
                // Run Maven on a Unix agent.
                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+               body()
             }}
-      
-            body()
       
             post {
                // If Maven was able to run the tests, even if some of the test
