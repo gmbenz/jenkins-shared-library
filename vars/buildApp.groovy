@@ -19,7 +19,9 @@ def call(Map config=[:], Closure body) {
                echo "config.arument1 = ${config.argument1}"
                body()
             }}
+         }
          stage("Build") {
+            when { expression{ CONTINUE } }
             steps { script {
       
                // Get some code from a GitHub repository
