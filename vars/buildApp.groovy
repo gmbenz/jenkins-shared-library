@@ -12,10 +12,15 @@ def call(Map config=[:], Closure body) {
       }
    
       stages {
-         stage("Build") {
+         stage("Initialize") {
             steps { script {
                echo "TAG = ${TAG}"
                echo "CONTINUE = ${CONTINUE}"
+               echo "config.arument1 = ${config.argument1}"
+               body()
+            }}
+         stage("Build") {
+            steps { script {
       
                // Get some code from a GitHub repository
                git 'https://github.com/jglick/simple-maven-project-with-tests.git'
@@ -23,7 +28,6 @@ def call(Map config=[:], Closure body) {
                // Run Maven on a Unix agent.
                sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
-               body()
             }}
       
             post {
