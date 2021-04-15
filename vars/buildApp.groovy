@@ -1,6 +1,6 @@
 def call(Map config=[:], Closure body) {
 
-   String TAG = new Date.format("yyyyMMddHHmmss")
+   String TAG
    boolean CONTINUE = true
 
    pipeline {
@@ -14,6 +14,7 @@ def call(Map config=[:], Closure body) {
       stages {
          stage("Build") {
             steps { script {
+               TAG = new Date.format("yyyyMMddHHmmss")
                echo "TAG = ${TAG}"
                echo "CONTINUE = ${CONTINUE}"
       
