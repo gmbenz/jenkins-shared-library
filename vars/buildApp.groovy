@@ -13,7 +13,7 @@ def call(Map config=[:], Closure body) {
    
       stages {
          stage("Build") {
-            steps {
+            steps { script {
                echo "TAG = ${TAG}"
                echo "CONTINUE = ${CONTINUE}"
       
@@ -22,7 +22,7 @@ def call(Map config=[:], Closure body) {
       
                // Run Maven on a Unix agent.
                sh "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
+            }}
       
             body()
       
