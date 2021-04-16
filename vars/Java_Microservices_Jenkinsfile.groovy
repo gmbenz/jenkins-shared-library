@@ -13,6 +13,7 @@ def call() {
       stages {
          stage("Initialize") {
             steps { script {
+               echo ">>> Printing in Intialize"
                echo "TAG = ${TAG}"
                print_vars()
             }}
