@@ -17,12 +17,12 @@ def call(Map config=[:], Closure body) {
                echo "TAG = ${TAG}"
                echo "CONTINUE = ${CONTINUE}"
                echo "config.arument1 = ${config.argument1}"
-               echo "JOB_VARIABLE = ${env.JOB_VARIABLE}"
-               echo "PARAMETER_VARIABLE = ${params.PARAMETER_VARIABLE}"
+               echo "JOB_VARIABLE = " + ((env.JOB_VARIABLE != null) ? "${env.JOB_VARIABLE}" : "null")
+               echo "PARAMETER_VARIABLE = " + ((params.PARAMETER_VARIABLE != null) ? "${params.PARAMETER_VARIABLE}" : "null")
                withFolderProperties {
-                  echo "FOLDER_VARIABLE = ${env.FOLDER_VARIABLE}"
+                  echo "FOLDER_VARIABLE = " + ((env.FOLDER_VARIABLE != null) ? "${env.FOLDER_VARIABLE}" : "null")
                }
-               echo "GLOBAL_VARIABLE = ${env.GLOBAL_VARIABLE}"
+               echo "GLOBAL_VARIABLE = " + ((env.GLOBAL_VARIABLE != null) ? "${env.GLOBAL_VARIABLE}" : "null")
                body()
             }}
          }
