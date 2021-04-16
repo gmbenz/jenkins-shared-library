@@ -1,3 +1,6 @@
+TAG = new Date().format("yyyyMMddHHmmss")
+CONTINUE = true
+
 def call() {
 
    pipeline {
@@ -10,8 +13,6 @@ def call() {
       stages {
          stage("Initialize") {
             steps { script {
-               String TAG = new Date().format("yyyyMMddHHmmss")
-               boolean CONTINUE = true
                echo ">>> Printing in Intialize"
                echo "TAG = ${TAG}"
                print_vars()
