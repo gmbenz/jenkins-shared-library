@@ -1,5 +1,5 @@
-def String TAG = new Date().format("yyyyMMddHHmmss")
-def boolean CONTINUE = true
+String TAG = new Date().format("yyyyMMddHHmmss")
+boolean CONTINUE = true
 
 def call() {
 
