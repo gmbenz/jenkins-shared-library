@@ -1,7 +1,7 @@
-TAG = new Date().format("yyyyMMddHHmmss")
-CONTINUE = true
-
 def call() {
+
+   String TAG = new Date().format("yyyyMMddHHmmss")
+   boolean CONTINUE = true
 
    pipeline {
       agent any
