@@ -17,6 +17,12 @@ def call(Map config=[:], Closure body) {
                echo "TAG = ${TAG}"
                echo "CONTINUE = ${CONTINUE}"
                echo "config.arument1 = ${config.argument1}"
+               echo "JOB_VARIABLE = ${env.JOB_VARIABLE}"
+               echo "PARAMETER_VARIABLE = ${params.PARAMETER_VARIABLE}"
+               withFolderProperties {
+                  echo "FOLDER_VARIABLE = ${env.FOLDER_VARIABLE}"
+               }
+               echo "GLOBAL_VARIABLE = ${env.GLOBAL_VARIABLE}"
                body()
             }}
          }
