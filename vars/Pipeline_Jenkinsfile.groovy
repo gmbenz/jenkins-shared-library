@@ -1,4 +1,5 @@
-def call(Map config=[:], Closure body) {
+//def call(Map config=[:], Closure body) {
+def call() {
 
    String TAG = new Date().format("yyyyMMddHHmmss")
    boolean CONTINUE = true
