@@ -42,6 +42,7 @@ def call() {
 }
 
 def print_vars() {
+    echo ">>> Printing variables"
     echo "TAG = ${TAG}"
     echo "CONTINUE = ${CONTINUE}"
     echo "JOB_VARIABLE = " + ((env.JOB_VARIABLE != null) ? "${env.JOB_VARIABLE}" : "null")
