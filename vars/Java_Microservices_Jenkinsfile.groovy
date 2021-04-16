@@ -1,6 +1,4 @@
-//def call(Map config=[:], Closure body) {
 def call() {
-
    String TAG = new Date().format("yyyyMMddHHmmss")
    boolean CONTINUE = true
 
@@ -8,23 +6,13 @@ def call() {
       agent any
    
       tools {
-         // Install the Maven version configured as "M3" and add it to the path.
          maven "M3"
       }
    
       stages {
          stage("Initialize") {
             steps { script {
-               echo "TAG = ${TAG}"
-               echo "CONTINUE = ${CONTINUE}"
-//               echo "config.arument1 = ${config.argument1}"
-               echo "JOB_VARIABLE = " + ((env.JOB_VARIABLE != null) ? "${env.JOB_VARIABLE}" : "null")
-               echo "PARAMETER_VARIABLE = " + ((params.PARAMETER_VARIABLE != null) ? "${params.PARAMETER_VARIABLE}" : "null")
-               withFolderProperties {
-                  echo "FOLDER_VARIABLE = " + ((env.FOLDER_VARIABLE != null) ? "${env.FOLDER_VARIABLE}" : "null")
-               }
-               echo "GLOBAL_VARIABLE = " + ((env.GLOBAL_VARIABLE != null) ? "${env.GLOBAL_VARIABLE}" : "null")
- //              body()
+               print_vars()
             }}
          }
          stage("Build") {
@@ -50,5 +38,15 @@ def call() {
          }
       }
    }
+}
 
+def print_vars() {
+    echo "TAG = ${TAG}"
+    echo "CONTINUE = ${CONTINUE}"
+    echo "JOB_VARIABLE = " + ((env.JOB_VARIABLE != null) ? "${env.JOB_VARIABLE}" : "null")
+    echo "PARAMETER_VARIABLE = " + ((params.PARAMETER_VARIABLE != null) ? "${params.PARAMETER_VARIABLE}" : "null")
+    withFolderProperties {
+       echo "FOLDER_VARIABLE = " + ((env.FOLDER_VARIABLE != null) ? "${env.FOLDER_VARIABLE}" : "null")
+    }
+    echo "GLOBAL_VARIABLE = " + ((env.GLOBAL_VARIABLE != null) ? "${env.GLOBAL_VARIABLE}" : "null")
 }
